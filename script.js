@@ -1,42 +1,26 @@
-function entrar(){
+function adicionarTarefa(){
 
-    let nome=document.getElementById("nome").value;
+    const campo=document.getElementById("tarefa");
     
-    if(nome==""){
+    const texto=campo.value;
     
-    alert("Digite seu nome.");
+    if(texto==="") return;
     
-    return;
+    const lista=document.getElementById("lista");
     
-    }
+    const item=document.createElement("li");
     
-    localStorage.setItem("usuario",nome);
+    item.textContent=texto;
     
-    window.location="usuario.html";
+    lista.appendChild(item);
     
-    }
-    
-    function sair(){
-    
-    localStorage.removeItem("usuario");
-    
-    window.location="index.html";
+    campo.value="";
     
     }
     
-    if(window.location.pathname.includes("usuario.html")){
+    if("serviceWorker" in navigator){
     
-    let nome=localStorage.getItem("usuario");
-    
-    document.getElementById("mensagem").innerHTML=
-    
-    "Bem-vindo, "+nome+"!";
-    
-    }
-    
-    if('serviceWorker' in navigator){
-    
-    navigator.serviceWorker.register('sw.js');
+    navigator.serviceWorker.register("sw.js");
     
     }
     
